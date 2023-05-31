@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  violet:
+  image: registry.ap-southeast-1.aliyuncs.com/onlinelearning/violet:latest
+  restart: always
+  ports:
+  - 3010:80
