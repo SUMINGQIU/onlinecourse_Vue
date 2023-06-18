@@ -19,17 +19,17 @@
        
       </div>
       <div>
-          <div class="pagination-container">
-            <el-pagination
-              @size-change="handleSizeChange"
-              @current-change="handleCurrentChange"
-              v-model:current-page.sync="currentPage"
-              :page-sizes="[6,12]"
-              :page-size="limit"
-              :layout="pagerLayout"
-              :total="total">
-            </el-pagination>
-          </div>
+        <div class="pagination-container">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            v-model:current-page.sync="currentPage"
+            :page-sizes="[6,12]"
+            :page-size="limit"
+            :layout="pagerLayout"
+            :total="total">
+          </el-pagination>
+        </div>
       </div>
     </div>
   </template>

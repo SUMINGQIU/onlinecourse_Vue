@@ -4,8 +4,6 @@
       
     <h2 class="justified-text">UP主在自学时发现，国外有很多优秀的CS开源课程，可惜大部分翻译都是机翻，
       较难以理解，会对听众造成很多理解困难，国内当然不乏优秀的网课，但是也有很多课只是在单纯念ppt。</h2>
-      
-
     <h2 class="justified-text">于是我想尝试提供一个小的个人平台，分享一些经过我和我朋友们翻译校对后的开源网课给广大网友。</h2>
   </div>
   <!-- 由于UP还是学生，服务器租用费都是自掏腰包，
@@ -14,8 +12,8 @@
 </template>
 
 <style>
-.justified-text {
-  text-align: justify;
-  margin: 4px 250px 30px 250px;
-}
+  .justified-text {
+    text-align: justify;
+    margin: 4px 250px 30px 250px;
+  }
 </style>
