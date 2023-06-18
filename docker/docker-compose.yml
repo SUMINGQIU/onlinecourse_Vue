@@ -1,8 +1,9 @@
 version: '2'
 
 services:
-  violet:
-  image: registry.ap-southeast-1.aliyuncs.com/onlinelearning/violet:latest
-  restart: always
-  ports:
-  - 3010:80
+  nginx:
+    image: registry.ap-southeast-1.aliyuncs.com/onlinelearning/onlinelearning:v1.0.4
+    restart: always
+
+    ports:
+      - 3001:80
