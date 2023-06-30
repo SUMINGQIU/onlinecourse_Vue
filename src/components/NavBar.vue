@@ -14,8 +14,9 @@
             </el-sub-menu>
         </el-sub-menu> -->
         <el-menu-item index="/about">关于 About</el-menu-item>
-        <el-menu-item index="/postvideo">投稿视频 PostVideo</el-menu-item>
-        <el-menu-item index="/register">管理员登录 Login</el-menu-item>
+        <!-- <el-menu-item index="/postvideo">投稿视频 PostVideo</el-menu-item> -->
+        <!-- <el-menu-item index="/register">管理员登录 Login</el-menu-item> -->
+        <el-menu-item index="/normalreg">注册 Register</el-menu-item>
         <!-- <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item> -->
     </el-menu>
 </template>

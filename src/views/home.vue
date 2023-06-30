@@ -2,14 +2,14 @@
     <div class="home">
       <div class="">
         <el-row :gutter="20">
-          <el-col :span="4" v-for="video in videos" :key="video.id">
+          <el-col :span="colSpan"  v-for="video in videos" :key="video.id" class="video-card-col">
             <el-card class="video-card" @click="goVideo(video)">
               <!-- console.log("video url is:", video.avatar) -->
               <img class = "video-avatar" :src="video.Avatar">
               <div>
-                <div class="video-title">{{video.title}}</div>
+                <div class="video-title">{{ truncateText(video.title, 50) }}</div>
                 <div class="video-bottom clearfix">
-                  <span class="video-info">{{video.info.substring(0, 40)}}</span>
+                  <span class="video-info">{{truncateText(video.info, 40)}}</span>
                 </div>
               </div>
             </el-card>
@@ -43,6 +43,7 @@
     name: 'HomeView',
     data() {
         return {
+            colSpan: 6,
             videos: [],
             start:0,
             limit:6,
@@ -52,9 +53,13 @@
         };
     },
     methods: {
+        handleResize() {
+          this.colSpan = this.getColSpan(); // 更新列数
+        },
         handleSizeChange(val) {
           console.log(`${val} items per page`);
           this.limit = val;
+          this.start = 0;
           this.load();
         },
         handleCurrentChange(val) {
@@ -71,12 +76,38 @@
         goVideo(video) {
           this.$router.push({ name: 'showVideo', params: {videoID: video.id}});
         },
+        getColSpan() {
+          // 根据屏幕宽度决定每列的 span 值
+          const screenWidth = window.innerWidth;
+          // console.log("current width is", screenWidth)
+          if (screenWidth >= 1200) {
+            return 6; // 大屏幕上每行显示 4 列
+          } else if(screenWidth >= 900) {
+            return 8; // 小屏幕上每行显示 3 列
+          } else if(screenWidth >= 300){
+            return 12;
+          } else {
+            return 24;
+          }
+        },
+        truncateText(text, maxLength) {
+          if (text.length > maxLength) {
+            return text.substring(0, maxLength) + '...';
+          } else {
+            return text;
+          }
+        },
         
     },
     components: {
     },
-    beforeMount() {
-        this.load(); 
+    mounted() {
+      this.load();
+      this.handleResize();
+      window.addEventListener('resize', this.handleResize);
+    },
+    beforeUnmount() {
+      window.removeEventListener('resize', this.handleResize);
     },
   }
   </script>
@@ -92,15 +123,18 @@
       margin-top: 10px;
     }
     .video-title {
-      margin: 4px 0px 4px 0px;
+      margin: 40px 0px 40px 0px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
     }
     .video-card {
+      margin: 4px 0px 4px 0px;
       cursor: pointer;
     }
-
+    .video-card-col {
+      margin-bottom: 10px; /* 设置右侧的间距为 10px */
+    }
     .pagination-container {
       position: fixed;
       bottom: 20px;

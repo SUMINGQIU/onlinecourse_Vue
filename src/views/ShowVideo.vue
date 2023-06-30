@@ -6,10 +6,13 @@
             {{video.view}}
         </div>
       </div>
-      <videoPlay
-        v-bind="playerOptions"
-        :poster="playerOptions.postUrl"
-      />
+      <div class="video-container">
+        <videoPlay
+            v-bind="playerOptions"
+            :poster="playerOptions.postUrl"
+        />
+      </div>
+      
       <div class="video-info">
         <pre>{{video.info}}</pre>
       </div>
@@ -39,8 +42,8 @@
             const videoUrl = ref('');
             const postUrl = ref(''); 
             const playerOptions = reactive({
-                width: "800px", //播放器宽度
-                height: "450px", //播放器高度
+                width: "100%", //播放器宽度
+                height: "auto", //播放器高度
                 color: "#409eff", //主题色
                 // src: "https://cdn.jsdelivr.net/gh/xdlumia/files/video-play/IronMan.mp4", //视频源
                 src: videoUrl,
@@ -99,7 +102,12 @@
     };
 </script>
 
-
+<style>
+    .video-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+</style>
 
 
 
